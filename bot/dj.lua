@@ -259,7 +259,7 @@ function create_config( )
     "webshot",
     "voice",
     },
-    sudo_users = {179071599},--Sudo users
+    sudo_users = {24709501},--Sudo users
     moderation = {data = 'data/moderation.json'},
     about_text = [[
     MehdiHcker Bot 
