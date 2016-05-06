@@ -219,6 +219,12 @@ function create_config( )
     "onservice",
     "inrealm",
     "inpm",
+    "ID",
+    "File_Manager",
+    "IP",
+    "Fantasy_Writer.lua",
+    "updater.lua",
+    "filemanager.lua",
     "info",
     "filtering",
     "feedback",
@@ -373,7 +379,7 @@ function create_config( )
 !aparat متن
 سرچ کردن یک متن در آپارات
 
-!praytime (شهر)
+!azan (شهر)
 دریافت وقت اذان یک شهر
 
 بگو (متن)
