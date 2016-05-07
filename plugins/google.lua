@@ -32,10 +32,10 @@ end
 
 return {
   description = "Searches Google and send results",
-  usage = "scr [terms]: Searches Google and send results",
+  usage = "!google [terms]: Searches Google and send results",
   patterns = {
-    "^[Ss]cr (.*)$",
-    "^%.[S|s]cr (.*)$"
+    "^!google (.*)$",
+    "^%.[g|G]oogle (.*)$"
   },
   run = run
 }
