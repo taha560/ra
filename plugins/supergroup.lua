@@ -19,6 +19,8 @@ local function check_member_super(cb_extra, success, result)
         settings = {
           set_name = string.gsub(msg.to.title, '_', ' '),
 		  lock_arabic = 'no',
+		  antitag = 'yes',
+		  lock_english = 'no',
 		  lock_link = "no",
           flood = 'yes',
 		  lock_spam = 'yes',
@@ -287,11 +289,28 @@ local function unlock_group_arabic(msg, data, target)
     return 'عربی و فارسی مجاز شد'
   end
 end
-
+local group_tag_lock = data[tostring(target)]['settings']['antitag']
+if group_tag_lock == 'yes' then
+return 'تگ قفل شده است'
+else
+data[tostring(target)]['settings']['antitag'] = 'yes'
+save_data(_config.moderation.data, data)
+return 'تگ باز شد'
+end
 local function lock_group_membermod(msg, data, target)
   if not is_momod(msg) then
     return
   end
+end
+local group_bots_lock = data[tostring(target)]['settings']['lock_bots']
+  if group_bots_lock == 'no' then
+    return 'ضد ربات فعال شد'
+  else
+    data[tostring(target)]['settings']['lock_bots'] = 'no'
+    save_data(_config.moderation.data, data)
+    return 'ضد ربات غیر فعال شد'
+  end
+end
   local group_member_lock = data[tostring(target)]['settings']['lock_member']
   if group_member_lock == 'yes' then
     return 'اعضای سوپرگروه در حال حاظر قفل می باشند'
