@@ -209,6 +209,10 @@ function create_config( )
     enabled_plugins = {
     "admin",
     "auto_leave",
+    "antitag",
+    "antibots",
+    "isup",
+    "kickall",
     "addbot",
     "aparat",
     "arabic_lock",
