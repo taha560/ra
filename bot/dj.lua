@@ -220,11 +220,12 @@ function create_config( )
     "inrealm",
     "inpm",
     "ID",
+    "lock_english",
+    "lock_link",
     "File_Manager",
-    "IP",
-    "Fantasy_Writer.lua",
-    "updater.lua",
-    "filemanager.lua",
+    "Fantasy_Writer",
+    "updater",
+    "filemanager",
     "info",
     "filtering",
     "feedback",
@@ -427,6 +428,9 @@ function create_config( )
 !time (نام شهر)
 دریافت زمان یک شهر 
 
+!share 
+دریافت اطلاعات سازنده
+
 !weather (نام شهر)
 دریافت وضعیت آب و هوای یک شهر
 
@@ -594,6 +598,9 @@ MehdiHacker SuperGroup Commands:
 
 !time (نام شهر)
 دریافت زمان یک شهر 
+
+!share 
+دریافت اطلاعات سازنده
 
 !weather (نام شهر)
 دریافت وضعیت آب و هوای یک شهر
