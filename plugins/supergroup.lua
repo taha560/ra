@@ -19,8 +19,6 @@ local function check_member_super(cb_extra, success, result)
         settings = {
           set_name = string.gsub(msg.to.title, '_', ' '),
 		  lock_arabic = 'no',
-		  antitag = 'yes',
-		  antibots = 'yes',
 		  lock_english = 'no',
 		  lock_link = "no",
           flood = 'yes',
@@ -290,28 +288,28 @@ local function unlock_group_arabic(msg, data, target)
     return 'عربی و فارسی مجاز شد'
   end
 end
-local group_tag_lock = data[tostring(target)]['settings']['antitag']
-if group_tag_lock == 'yes' then
-return 'تگ قفل شده است'
-else
-data[tostring(target)]['settings']['antitag'] = 'yes'
-save_data(_config.moderation.data, data)
-return 'تگ باز شد'
+local group_english_lock = data[tostring(target)]['settings']['lock_english']
+  if group_english_lock == 'yes' then
+    return 'چت انگلیسی درحال حاضر ممنوع می باشد'
+  else
+    data[tostring(target)]['settings']['lock_english'] = 'yes'
+    save_data(_config.moderation.data, data)
+    return 'چت انگلیسی ممنوع شد'
+  end
+end
+local group_english_lock = data[tostring(target)]['settings']['lock_english']
+  if group_english_lock == 'no' then
+    return 'چت انگلیسی درحال حاضر مجاز میباشد'
+  else
+    data[tostring(target)]['settings']['lock_english'] = 'no'
+    save_data(_config.moderation.data, data)
+    return 'چت انگلیسی مجاز شد'
+  end
 end
 local function lock_group_membermod(msg, data, target)
   if not is_momod(msg) then
     return
   end
-end
-local group_bots_lock = data[tostring(target)]['settings']['lock_bots']
-  if group_bots_lock == 'no' then
-    return 'ضد ربات فعال شد'
-  else
-    data[tostring(target)]['settings']['lock_bots'] = 'no'
-    save_data(_config.moderation.data, data)
-    return 'ضد ربات غیر فعال شد'
-  end
-end
   local group_member_lock = data[tostring(target)]['settings']['lock_member']
   if group_member_lock == 'yes' then
     return 'اعضای سوپرگروه در حال حاظر قفل می باشند'
@@ -575,7 +573,7 @@ end
 		end
 	end
   local settings = data[tostring(target)]['settings']
-  local text = "⚙ تنظیمات سوپرگروه :\n\n🔹 قفل لینک : "..settings.lock_link.."\n🔹 قفل فلود : "..settings.flood.."\n🔹 میزان حساسیت اسپم : "..NUM_MSG_MAX.."\n🔹 قفل اسپم : "..settings.lock_spam.."\n🔹 قفل عربی و فارسی : "..settings.lock_arabic.."\n🔹 قفل اعضا : "..settings.lock_member.."\n🔹 قفل کارکتر آر تی ال : "..settings.lock_rtl.."\n🔹 قفل استیکر : "..settings.lock_sticker.."\n🔹 عمومی بودن گروه : "..settings.public.."\n🔹 قفل تنظیمات سختگیرانه : "..settings.strict
+  local text = "⚙ تنظیمات سوپرگروه :\n\n🔹 قفل لینک : "..settings.lock_link.."\n🔹 قفل فلود : "..settings.flood.."\n🔹 میزان حساسیت اسپم : "..NUM_MSG_MAX.."\n🔹 قفل اسپم : "..settings.lock_spam.."\n🔹 قفل عربی و فارسی : "..settings.lock_arabic.."\n🔹 قفل انگلیسی : "..settings.lock_english.."\n🔹 قفل اعضا : "..settings.lock_member.."\n🔹 قفل کارکتر آر تی ال : "..settings.lock_rtl.."\n🔹 قفل استیکر : "..settings.lock_sticker.."\n🔹 عمومی بودن گروه : "..settings.public.."\n🔹 قفل تنظیمات سختگیرانه : "..settings.strict
   return text
 end
 
@@ -1672,6 +1670,10 @@ local function run(msg, matches)
 				savelog(msg.to.id, name_log.." ["..msg.from.id.."] locked arabic ")
 				return lock_group_arabic(msg, data, target)
 			end
+			if matches[2] == 'english' then
+				savelog(msg.to.id, name_log.." ["..msg.from.id.."] locked english ")
+				return lock_group_english(msg, data, target)
+			end
 			if matches[2] == 'member' then
 				savelog(msg.to.id, name_log.." ["..msg.from.id.."] locked member ")
 				return lock_group_membermod(msg, data, target)
@@ -1715,6 +1717,10 @@ local function run(msg, matches)
 			if matches[2] == 'arabic' then
 				savelog(msg.to.id, name_log.." ["..msg.from.id.."] unlocked Arabic")
 				return unlock_group_arabic(msg, data, target)
+			end
+			if matches[2] == 'english' then
+				savelog(msg.to.id, name_log.." ["..msg.from.id.."] locked english ")
+				return lock_group_english(msg, data, target)
 			end
 			if matches[2] == 'member' then
 				savelog(msg.to.id, name_log.." ["..msg.from.id.."] unlocked member ")
