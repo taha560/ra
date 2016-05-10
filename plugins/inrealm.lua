@@ -218,7 +218,24 @@ local function lock_group_arabic(msg, data, target)
     return 'عربی قفل شد'
   end
 end
-
+local group_english_lock = data[tostring(target)]['settings']['lock_english']
+  if group_english_lock == 'yes' then
+    return 'چت انگلیسی درحال حاضر ممنوع می باشد'
+  else
+    data[tostring(target)]['settings']['lock_english'] = 'yes'
+    save_data(_config.moderation.data, data)
+    return 'چت انگلیسی ممنوع شد'
+  end
+end
+local group_english_lock = data[tostring(target)]['settings']['lock_english']
+  if group_english_lock == 'no' then
+    return 'چت انگلیسی درحال حاضر مجاز میباشد'
+  else
+    data[tostring(target)]['settings']['lock_english'] = 'no'
+    save_data(_config.moderation.data, data)
+    return 'چت انگلیسی مجاز شد'
+  end
+end
 local function unlock_group_arabic(msg, data, target)
     if not is_admin1(msg) then
         return "فقط مخصوص مدیران می باشد"
@@ -253,11 +270,11 @@ local function unlock_group_rtl(msg, data, target)
   end
   local group_rtl_lock = data[tostring(target)]['settings']['lock_rtl']
   if group_rtl_lock == 'no' then
-    return 'RTL char. in names is already unlocked'
+    return 'کارکتر آر تی ال باز می باشد'
   else
     data[tostring(target)]['settings']['lock_rtl'] = 'no'
     save_data(_config.moderation.data, data)
-    return 'RTL char. in names has been unlocked'
+    return 'کارکتر آر تی ال در حال حاضر باز میباشد'
   end
 end
 
@@ -267,137 +284,137 @@ local function lock_group_links(msg, data, target)
     end
   local group_link_lock = data[tostring(target)]['settings']['lock_link']
   if group_link_lock == 'yes' then
-    return 'Link posting is already locked'
+    return 'لینک گزاشتن قفل شد'
   else
     data[tostring(target)]['settings']['lock_link'] = 'yes'
     save_data(_config.moderation.data, data)
-    return 'Link posting has been locked'
+    return 'لینک گزاشتن در حال حاضر قفل می باشد'
   end
 end
 
 local function unlock_group_links(msg, data, target)
     if not is_admin1(msg) then
-        return "For admins only!"
+        return "فقط برای مدیران!"
     end
   local group_link_lock = data[tostring(target)]['settings']['lock_link']
   if group_link_lock == 'no' then
-    return 'Link posting is not locked'
+    return 'لینک گزاشتن باز می باشد'
   else
     data[tostring(target)]['settings']['lock_link'] = 'no'
     save_data(_config.moderation.data, data)
-    return 'Link posting has been unlocked'
+    return 'درحال حاضر لینک گزاشتن باز می باشد'
   end
 end
 
 local function lock_group_spam(msg, data, target)
     if not is_admin1(msg) then
-        return "For admins only!"
+        return "فقط برای مدیران!"
     end
   local group_spam_lock = data[tostring(target)]['settings']['lock_spam']
   if group_spam_lock == 'yes' then
-    return 'SuperGroup spam is already locked'
+    return 'اسپم سوپر گروه قفل شد'
   else
     data[tostring(target)]['settings']['lock_spam'] = 'yes'
     save_data(_config.moderation.data, data)
-    return 'SuperGroup spam has been locked'
+    return 'در حال حاضر اسپم قفل می باشد'
   end
 end
 
 local function unlock_group_spam(msg, data, target)
     if not is_admin1(msg) then
-        return "For admins only!"
+        return "فقط برای مدیران!"
     end
   local group_spam_lock = data[tostring(target)]['settings']['lock_spam']
   if group_spam_lock == 'no' then
-    return 'SuperGroup spam is not locked'
+    return 'اسپم قفل نمی باشد'
   else
     data[tostring(target)]['settings']['lock_spam'] = 'no'
     save_data(_config.moderation.data, data)
-    return 'SuperGroup spam has been unlocked'
+    return 'اسپم در حال حاضر قفل نمی باشد'
   end
 end
 
 local function lock_group_rtl(msg, data, target)
     if not is_admin1(msg) then
-        return "For admins only!"
+        return "فقط برای مدیران!"
     end
   local group_rtl_lock = data[tostring(target)]['settings']['lock_rtl']
   if group_rtl_lock == 'yes' then
-    return 'RTL char. in names is already locked'
+    return 'کارکتر آر تی ال قفل شد'
   else
     data[tostring(target)]['settings']['lock_rtl'] = 'yes'
     save_data(_config.moderation.data, data)
-    return 'RTL char. in names has been locked'
+    return 'کارکتر آر تی ال در حال حاضر قفل می باشد'
   end
 end
 
 local function unlock_group_rtl(msg, data, target)
     if not is_admin1(msg) then
-        return "For admins only!"
+        return "فقط برای مدیران!"
     end
   local group_rtl_lock = data[tostring(target)]['settings']['lock_rtl']
   if group_rtl_lock == 'no' then
-    return 'RTL char. in names is already unlocked'
+    return 'کارکتر آر تی ال باز شد'
   else
     data[tostring(target)]['settings']['lock_rtl'] = 'no'
     save_data(_config.moderation.data, data)
-    return 'RTL char. in names has been unlocked'
+    return 'کارکتر آر تی ال در حال حاضر باز می باشد'
   end
 end
 
 local function lock_group_sticker(msg, data, target)
     if not is_admin1(msg) then
-        return "For admins only!"
+        return "فقط برای مدیران!"
     end
   local group_sticker_lock = data[tostring(target)]['settings']['lock_sticker']
   if group_sticker_lock == 'yes' then
-    return 'Sticker posting is already locked'
+    return 'استیکر قفل شد'
   else
     data[tostring(target)]['settings']['lock_sticker'] = 'yes'
     save_data(_config.moderation.data, data)
-    return 'Sticker posting has been locked'
+    return 'گزاشتن استیکر درحال حاضر قفل می باشد'
   end
 end
 
 local function unlock_group_sticker(msg, data, target)
     if not is_admin1(msg) then
-        return "For admins only!"
+        return "فقط برای مدیران!"
     end
 	local group_sticker_lock = data[tostring(target)]['settings']['lock_sticker']
 	if group_sticker_lock == 'no' then
-		return 'Sticker posting is already unlocked'
+		return 'استیکر باز شد'
 	else
 		data[tostring(target)]['settings']['lock_sticker'] = 'no'
 		save_data(_config.moderation.data, data)
-		return 'Sticker posting has been unlocked'
+		return 'گزاشتن استیکر درحال حاضر باز می باشد'
 	end
 end
 
 local function set_public_membermod(msg, data, target)
     if not is_admin1(msg) then
-        return "For admins only!"
+        return "فقط برای مدیران!"
     end
 	local group_public_lock = data[tostring(target)]['settings']['public']
 	if group_public_lock == 'yes' then
-		return 'Group is already public'
+		return 'گروه عمومی است'
 	else
 		data[tostring(target)]['settings']['public'] = 'yes'
 		save_data(_config.moderation.data, data)
 	end
-  return 'SuperGroup is now: public'
+  return 'وضعیت سوپر گروه : عمومی'
 end
 
 local function unset_public_membermod(msg, data, target)
     if not is_admin1(msg) then
-        return "For admins only!"
+        return "فقط برای مدیران!"
     end
 	local group_public_lock = data[tostring(target)]['settings']['public']
 	if group_public_lock == 'no' then
-		return 'Group is not public'
+		return 'گروه عمومی نیست'
 	else
 		data[tostring(target)]['settings']['public'] = 'no'
 		save_data(_config.moderation.data, data)
-		return 'SuperGroup is now: not public'
+		return 'وضعیت سوپر گروه : خصوصی'
 	end
 end
 
@@ -405,7 +422,7 @@ end
 local function show_group_settings(msg, data, target)
     local data = load_data(_config.moderation.data, data)
     if not is_admin1(msg) then
-        return "For admins only!"
+        return "فقط برای مدیران!"
     end
 	if data[tostring(target)]['settings'] then
 		if not data[tostring(target)]['settings']['public'] then
@@ -413,14 +430,14 @@ local function show_group_settings(msg, data, target)
 		end
 	end
     local settings = data[tostring(target)]['settings']
-    local text = "Group settings for "..target..":\nLock group name : "..settings.lock_name.."\nLock group photo : "..settings.lock_photo.."\nLock group member : "..settings.lock_member.."\nPublic: "..settings.public
+    local text = "تنظیمات گروه "..target..":\nقفل اسم گروه : "..settings.lock_name.."\nLock group photo : "..settings.lock_photo.."\nLock group member : "..settings.lock_member.."\nPublic: "..settings.public
 end
 
 -- show SuperGroup settings
 local function show_super_group_settings(msg, data, target)
     local data = load_data(_config.moderation.data, data)
     if not is_admin1(msg) then
-        return "For admins only!"
+        return "فقط برای مدیران!"
     end
 	if data[tostring(msg.to.id)]['settings'] then
 		if not data[tostring(msg.to.id)]['settings']['public'] then
@@ -438,7 +455,7 @@ local function show_super_group_settings(msg, data, target)
 		end
 	end
     local settings = data[tostring(target)]['settings']
-    local text = "SuperGroup settings for "..target..":\nLock links : "..settings.lock_link.."\nLock flood: "..settings.flood.."\nLock spam: "..settings.lock_spam.."\nLock Arabic: "..settings.lock_arabic.."\nLock Member: "..settings.lock_member.."\nLock RTL: "..settings.lock_rtl.."\nLock sticker: "..settings.lock_sticker.."\nPublic: "..settings.public.."\nStrict settings: "..settings.strict
+    local text = "تنظیمات سوپر گروه "..target..":\nقفل لینک : "..settings.lock_link.."\nقفل فلوود: "..settings.flood.."\nقفل اسپم: "..settings.lock_spam.."\nقفل فارسی/عربی: "..settings.lock_arabic.."\nقفل اعضا: "..settings.lock_member.."\nقفل آر تی ال: "..settings.lock_rtl.."\nقفل استیکر: "..settings.lock_sticker.."\nوضعیت گروه: "..settings.public.."\nتنظیمات سخت گیرانه: "..settings.strict
     return text
 end
 
@@ -815,6 +832,9 @@ function run(msg, matches)
 				end
 				if matches[3] == 'member' then
 					return unlock_group_member(msg, data, target)
+				end
+				if matches[3] == 'english' then
+					return unlock_lock_english(msg, data, target)
 				end
 				if matches[3] == 'photo' then
 					return unlock_group_photo(msg, data, target)
