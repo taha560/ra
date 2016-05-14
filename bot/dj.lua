@@ -214,23 +214,23 @@ function create_config( )
     "arabic_lock",
     "anti_spam",
     "azan",
-	"bot",
-	"botinfo",
-	"broadcast",
+    "bot",
+    "botinfo",
+    "broadcast",
     "calc",
-	"convert",
+    "convert",
     "plugins",
     "onservice",
     "inrealm",
     "inpm",
-	"isup",
-	"kickreply",
+    "isup",
+    "kickreply",
     "ID",
     "lock_english",
     "lock_link",
     "filemanag",
     "updater",
-	"get",
+    "get",
     "info",
     "filtering",
     "feedback",
@@ -255,9 +255,9 @@ function create_config( )
     "cpu",
     "time",
     "spam",
-	"share",
-	"showplug",
-	"send",
+    "share",
+    "showplug",
+    "send",
     "support",
     "linksp",
     "bot",
@@ -270,7 +270,7 @@ function create_config( )
     "msg_checks",
     "weather",
     "welcome",
-	"write",
+    "write",
     "webshot",
     "voice",
     },
@@ -442,6 +442,9 @@ function create_config( )
 !weather (نام شهر)
 دریافت وضعیت آب و هوای یک شهر
 
+!write (متن انگلیسی)
+دریافت متن زیبا شده
+
 !sticker متن
 تبدیل متن به استیکر
 
@@ -452,8 +455,8 @@ function create_config( )
 اسکرین شات گرفتن از یک سایت
 ]],
     help_text = [[ ]],
-	help_text_super =[[
-MehdiHacker SuperGroup Commands:
+	help_text_super =[[ 
+    MehdiHacker SuperGroup Commands:
 
 !owner
 دریافت آیدی مدیر اصلی گروه
@@ -476,6 +479,9 @@ MehdiHacker SuperGroup Commands:
 
 !info
 دریافت اطلاعات خود
+
+!kickreply
+کیک افراد باreply
 
 !save (متن) (موضوع)
 ذخیره یک متن
@@ -559,7 +565,7 @@ MehdiHacker SuperGroup Commands:
 !aparat متن
 سرچ کردن یک متن در آپارات
 
-!praytime (شهر)
+!azan (شهر)
 دریافت وقت اذان یک شهر
 
 بگو (متن)
@@ -612,6 +618,9 @@ MehdiHacker SuperGroup Commands:
 
 !weather (نام شهر)
 دریافت وضعیت آب و هوای یک شهر
+
+!write (متن انگلیسی)
+دریافت متن زیبا شده
 
 !sticker متن
 تبدیل متن به استیکر
