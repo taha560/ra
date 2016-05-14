@@ -509,17 +509,17 @@ return {
 	..'<tr><td align="center">/infodel آیدی</td><td align="right">حذف مقام اعطا شده</td></tr>',
 	usage = {
 		user = {
-			"info: اطلاعات شما",
-			"info (reply): اطلاعات دیگران",
+			"!info: اطلاعات شما",
+			"!info (reply): اطلاعات دیگران",
 			},
 		sudo = {
-			"/info (id) (txt) : اعطای مقام",
-			"/infodel : حذف مقام",
+			"!info (id) (txt) : اعطای مقام",
+			"!infodel : حذف مقام",
 			},
 		},
 	patterns = {
-		"^(/infodel) (.*)$",
-		"^(/info) ([^%s]+) (.*)$",
+		"^(!infodel) (.*)$",
+		"^(!info) ([^%s]+) (.*)$",
 		"^([Ii]nfo) (.*)$",
 		"^(info)$",
 		"^(Info)$",
