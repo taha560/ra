@@ -274,7 +274,7 @@ function create_config( )
     "webshot",
     "voice",
     },
-    sudo_users = {24709501},--Sudo users
+    sudo_users = {189308877},--Sudo users
     moderation = {data = 'data/moderation.json'},
     about_text = [[
     MehdiHcker Bot 
@@ -282,7 +282,7 @@ function create_config( )
     owner : @pic5all
     ourchannel : @pic4all]],
     help_text_realm = [[ 
-    MehdiHacker SuperGroup Commands:
+    king SuperGroup Commands:
 
 !owner
 دریافت آیدی مدیر اصلی گروه
@@ -456,7 +456,7 @@ function create_config( )
 ]],
     help_text = [[ ]],
 	help_text_super =[[ 
-    MehdiHacker SuperGroup Commands:
+    king SuperGroup Commands:
 
 !owner
 دریافت آیدی مدیر اصلی گروه
